@@ -4,7 +4,7 @@ function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null); // New state for error handling
-  const apiKey = 'a8e611acb37e33f3be7c7a4d34d0e33f'; // Replace with your real API key
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY; // Replace with your real API key
 
   const getWeather = async () => {
     if (city) {
@@ -29,14 +29,14 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-blue-950">
-      <div className="bg-blue-800 p-8 rounded-lg shadow-lg w-full max-w-sm border border-blue-500">
+    <div className="flex justify-center items-center min-h-screen bg-[#f3eeff]">
+      <div className="p-8 rounded-lg shadow-lg w-full max-w-sm border border-[#d5c5ff] bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)] ">
         <h1 className="text-3xl font-bold mb-6 text-center text-white">Check Weather</h1>
         
         {/* Input for the city */}
         <input
           type="text"
-          className="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#b5a2e4]"
           placeholder="Enter city name"
           value={city}
           onChange={(e) => setCity(e.target.value)}
@@ -45,7 +45,7 @@ function App() {
         {/* Button to get weather */}
         <button
           onClick={getWeather}
-          className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+          className="w-full bg-[#b5a2e4] text-white py-2 rounded-lg font-semibold hover:bg-[#9586bc] transition duration-300"
         >
           Get Weather
         </button>
@@ -61,9 +61,9 @@ function App() {
         {weather && !error && (
           <div className="mt-6 text-center">
             <h2 className="text-3xl font-bold text-white">{weather.name}</h2>
-            <p className="text-lg text-blue-500 pt-7">Temperature:</p>
+            <p className="text-lg text-[#9283b7] pt-7">Temperature:</p>
             <p className="text-5xl text-white font-semibold">{weather.main.temp}°C</p>
-            <p className="text-lg text-blue-500 pt-7">Weather:</p>
+            <p className="text-lg text-[#9283b7] pt-7">Weather:</p>
             <p className="text-3xl text-white font-semibold">{weather.weather[0].description}</p>
           </div>
         )}
